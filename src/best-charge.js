@@ -18,16 +18,14 @@ function bestCharge(selectedItems) {
 
   //对输入进行解析，提取出其中的菜品和数量
   //输入实例：inputs = ["ITEM0013 x 4", "ITEM0022 x 1"];selectedItems
-  for (var i = 0; i < selectedItems.length; i++) {
-    var itemPos = selectedItems[i].search(/ x /g);
+  for (let i = 0; i < selectedItems.length; i++) {
+    let itemPos = selectedItems[i].search(/ x /g);
     element = {
       id: selectedItems[i].substr(0, itemPos),
       count: parseInt(selectedItems[i].substr(itemPos + 3))
     };
     //查找该id所对应得菜，返回数组
-    var dish = items.filter(function (item) {
-      return item.id == element.id;
-    });
+    let dish = items.filter((item) => item.id == element.id);
     element.name = dish[0].name;
     element.price = dish[0].price;
     meal.push(element);
@@ -35,10 +33,10 @@ function bestCharge(selectedItems) {
 
   var mealDetail = "";
   var mealTotalPrice = 0;                                   //订单总价
-  for (var j = 0; j < meal.length; j++) {
-    var mealPrice = meal[j].count * meal[j].price;          //单项总价
+  for (let j = 0; j < meal.length; j++) {
+    let mealPrice = meal[j].count * meal[j].price;          //单项总价
     mealTotalPrice += mealPrice;
-    var tempStr = meal[j].name + " x " + meal[j].count.toString() + " = " + mealPrice.toString() + "元\n";
+    let tempStr = meal[j].name + " x " + meal[j].count.toString() + " = " + mealPrice.toString() + "元\n";
     mealDetail += tempStr;
   }
   result = result + mealDetail + line;
@@ -62,15 +60,13 @@ function bestCharge(selectedItems) {
 
   var DetailItem = "";
 
-  for(var k = 0; k < promotions[1].items.length; k++)
+  for(let k = 0; k < promotions[1].items.length; k++)
   {
-    var singleitem = meal.filter(function (item) {
-      return item.id == promotions[1].items[k];
-    });
+    let singleitem = meal.filter((item) => item.id == promotions[1].items[k]);
     
     if(singleitem.length != 0)
     {
-      console.log(singleitem);
+      //console.log(singleitem);
       singleitem[0].price /= 2;
       secondPromotion += singleitem[0].price * singleitem[0].count;
       DetailItem += singleitem[0].name + "，";

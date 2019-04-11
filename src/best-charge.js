@@ -36,7 +36,7 @@ function bestCharge(selectedItems) {
   for (let j = 0; j < meal.length; j++) {
     let mealPrice = meal[j].count * meal[j].price;          //单项总价
     mealTotalPrice += mealPrice;
-    let tempStr = meal[j].name + " x " + meal[j].count.toString() + " = " + mealPrice.toString() + "元\n";
+    let tempStr = `${meal[j].name} x ${meal[j].count.toString()} = ${mealPrice.toString()}元\n`;
     mealDetail += tempStr;
   }
   result = result + mealDetail + line;
@@ -80,20 +80,22 @@ function bestCharge(selectedItems) {
     if(firstPromotion < secondPromotion)    //如果优惠1小于优惠2
     {
       promotionPrice = secondPromotion;
-      promotionsDetail += "指定菜品半价(" + DetailItem.substr(0, (DetailItem.length - 1)) + ")，省" + promotionPrice.toString() +"元\n";
+      promotionsDetail += `指定菜品半价(${DetailItem.substr(0, (DetailItem.length - 1))})，省${promotionPrice.toString()}元\n`;
     } 
     else      //如果优惠1大于或等于优惠2
     {
       promotionPrice = firstPromotion;
-      promotionsDetail += "满30减6元，省" + promotionPrice.toString() +"元\n";
+      promotionsDetail += `满30减6元，省${promotionPrice.toString()}元\n`;
     }
     promotionsDetail += line;
+    //console.log(promotionsDetail);
 
   }
-    result += promotionsDetail;
+  
+  result += promotionsDetail;
 
   var totalPrice = mealTotalPrice - promotionPrice;
-  var totalPriceStr = "总计：" + totalPrice.toString() + "元\n";
+  var totalPriceStr = `总计：${totalPrice.toString()}元\n`;
   result += totalPriceStr;
 
   var sufstr = "===================================\n";

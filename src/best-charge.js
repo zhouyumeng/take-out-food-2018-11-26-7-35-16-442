@@ -70,9 +70,9 @@ function bestCharge(selectedItems) {
     
     if(singleitem.length != 0)
     {
-      //console.log(singleitem);
+      console.log(singleitem);
       singleitem[0].price /= 2;
-      secondPromotion += singleitem[0].price;
+      secondPromotion += singleitem[0].price * singleitem[0].count;
       DetailItem += singleitem[0].name + "，";
       secondPro = true;
     }

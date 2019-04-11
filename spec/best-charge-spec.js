@@ -4,6 +4,7 @@ var bestCharge = require("../src/best-charge.js");
 
 describe('Take out food', function () {
 
+//==============================================================================================
   it('should generate best charge when best is 指定菜品半价', function() {
     let inputs = ["ITEM0001 x 1", "ITEM0013 x 2", "ITEM0022 x 1"];
     let summary = bestCharge(inputs).trim();
@@ -21,6 +22,25 @@ describe('Take out food', function () {
     expect(summary).toEqual(expected)
   });
 
+//==============================================================================================
+  it('should generate best charge when best is 指定菜品半价', function() {
+    let inputs = ["ITEM0001 x 2", "ITEM0013 x 2", "ITEM0022 x 2"];
+    let summary = bestCharge(inputs).trim();
+    let expected = `
+============= 订餐明细 =============
+黄焖鸡 x 2 = 36元
+肉夹馍 x 2 = 12元
+凉皮 x 2 = 16元
+-----------------------------------
+使用优惠:
+指定菜品半价(黄焖鸡，凉皮)，省26元
+-----------------------------------
+总计：38元
+===================================`.trim()
+    expect(summary).toEqual(expected)
+  });
+
+//==============================================================================================
   it('should generate best charge when best is 满30减6元', function() {
     let inputs = ["ITEM0013 x 4", "ITEM0022 x 1"];
     let summary = bestCharge(inputs).trim();
@@ -37,6 +57,7 @@ describe('Take out food', function () {
     expect(summary).toEqual(expected)
   });
 
+//==============================================================================================
   it('should generate best charge when no promotion can be used', function() {
     let inputs = ["ITEM0013 x 4"];
     let summary = bestCharge(inputs).trim();

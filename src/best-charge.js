@@ -72,7 +72,7 @@ function bestCharge(selectedItems) {
     {
       //console.log(singleitem);
       singleitem[0].price /= 2;
-      secondPromotion += singleitem[0].price;
+      secondPromotion += singleitem[0].count * singleitem[0].price;
       DetailItem += singleitem[0].name + "，";
       secondPro = true;
     }

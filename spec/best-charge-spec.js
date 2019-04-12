@@ -1,4 +1,4 @@
-'use strict';
+
 
 var bestCharge = require("../src/best-charge.js");
 
